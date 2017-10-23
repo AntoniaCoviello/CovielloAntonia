@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			xsi:noNamespaceSchemaLocation="items.xsd">
+			
+	<relations>
+
+		<relation code="Recipe2AuthorRelRelation" generate="true" localized="false">
+			<sourceElement type="Recipe" qualifier="recipes" cardinality="many" />
+			<targetElement type="Author" qualifier="author" cardinality="one" />
+		</relation>
+		<relation code="Recipe2CategoryRelation" generate="true" localized="false">
+			<sourceElement type="Reecipe" qualifier="recipes" cardinality="many" />
+			<targetElement type="Category" qualifier="category" cardinality="one" />
+		</relation>
+		
+		<relation code="RecipetoIngredientRelation" autocreate="true" generate="true" localized="false"> 
+			<deployment table="RecipetoIngredientRel" typecode='20556'/>
+ 			<sourceElement qualifier="recipies" type="Recipe" cardinality="many" > 
+ 			<modifiers read="true" write="true" search="true"/>
+ 			</sourceElement>
+ 			<targetElement qualifier="ingredients" type="Ingredient" cardinality="many" >
+ 			<modifiers read="true" write="true" search="true"/>
+ 			</targetElement>
+ 		</relation>
+
+		<relation code="RecipetoToolRelation" autocreate="true" generate="true" localized="false"> 
+			<deployment table="RecipetoToolRel" typecode='20557'/>
+ 			<sourceElement qualifier="recipies" type="Recipe" cardinality="many" > 
+ 			<modifiers read="true" write="true" search="true"/>
+ 			</sourceElement>
+ 			<targetElement qualifier="tools" type="Tool" cardinality="many" >
+ 			<modifiers read="true" write="true" search="true"/>
+ 			</targetElement>
+ 		</relation>
+	</relations>		
+			
+			
+			
+			
+			
+			
+			
+
+	<itemtypes>
+		<itemtype code="Author" generate="true"  autocreate="true" >
+	   		<attributes>
+				<attribute qualifier="id" type="java.lang.Integer">
+					<description>IdChef</description>
+					<modifiers optional="false" unique="true"/>
+					<persistence type="property"/>
+				</attribute>
+				<attribute qualifier="name" type="java.lang.String">
+					<description>NomeChef</description>
+					<modifiers optional="false" />
+                    <persistence type="property"/>
+				</attribute>
+				<attribute qualifier="surname" type="java.lang.String">
+					<description>CognomeChef</description>
+					<modifiers optional="false" />
+                    <persistence type="property"/>
+				</attribute>
+			</attributes>
+		 </itemtype>
+		 <itemtype code="Recipe" generate="true"  autocreate="true" >
+	   		<attributes>
+				<attribute qualifier="id" type="java.lang.Integer">
+					<description>IdRecipe</description>
+					<modifiers optional="false" unique="true"/>
+					<persistence type="property"/>
+				</attribute>
+				<attribute qualifier="name" type="java.lang.String">
+					<description>NameRecipe</description>
+					<modifiers optional="false" />
+                    <persistence type="property"/>
+				</attribute>
+				<attribute qualifier="description" type="java.lang.String">
+					<description>DescriptionRecipe</description>
+					<modifiers optional="false" />
+                    <persistence type="property"/>
+				</attribute>
+			</attributes>
+		 </itemtype>
+		 <itemtype code="Ingredient" generate="true"  autocreate="true" >
+	   		<attributes>
+				<attribute qualifier="id" type="java.lang.Integer">
+					<description>IdIngredient</description>
+					<modifiers optional="false" unique="true"/>
+					<persistence type="property"/>
+				</attribute>
+				<attribute qualifier="name" type="java.lang.String">
+					<description>NameIngredient</description>
+					<modifiers optional="false" />
+                    <persistence type="property"/>
+				</attribute>
+			</attributes>
+			</itemtype>
+			<itemtype code="Tool" generate="true"  autocreate="true" >
+	   		<attributes>
+				<attribute qualifier="id" type="java.lang.Integer">
+					<description>IdTool</description>
+					<modifiers optional="false" unique="true"/>
+					<persistence type="property"/>
+				</attribute>
+				<attribute qualifier="name" type="java.lang.String">
+					<description>NomeTool</description>
+					<modifiers optional="false" />
+                    <persistence type="property"/>
+				</attribute>
+			</attributes>
+			</itemtype>
+			<itemtype code="Category" generate="true"  autocreate="true" >
+	   		<attributes>
+				<attribute qualifier="id" type="java.lang.Integer">
+					<description>IdCategory</description>
+					<modifiers optional="false" unique="true"/>
+					<persistence type="property"/>
+				</attribute>
+				<attribute qualifier="name" type="java.lang.String">
+					<description>NomeCategory</description>
+					<modifiers optional="false" />
+                    <persistence type="property"/>
+				</attribute>
+			</attributes>
+			</itemtype>
+			<itemtype code="RecipetoIngredientRelation" generate="true"  autocreate="true" >
+	   		<attributes>
+				<attribute qualifier="amount" type="java.lang.Integer" autocreate="true" >
+					<description>AmountIngredient</description>
+					<modifiers read="true" write="true" search="true" optional="false" />
+                    <persistence type="property"/>
+				</attribute>
+			</attributes>
+			<indexes>
+				<index name="index" unique="true">
+				<key attribute="source" />
+				<key attribute="target" />
+				</index>
+			</indexes>
+			</itemtype>
+			<itemtype code="RecipetoToolRelation" generate="true"  autocreate="true" >
+	   		<attributes>
+				<attribute qualifier="amount" type="java.lang.Integer" autocreate="true" >
+					<description>AmountTool</description>
+					<modifiers read="true" write="true" search="true" optional="false" />
+                    <persistence type="property"/>
+				</attribute>
+			</attributes>
+			<indexes>
+				<index name="index" unique="true">
+				<key attribute="source" />
+				<key attribute="target" />
+				</index>
+			</indexes>
+			</itemtype>			
+	</itemtypes>
+</items>
