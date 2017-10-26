@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+	
+    <bean id="universityuiipSystemSetup" class="org.training.setup.UniversityuiipSystemSetup">
+        <!-- constructor arg injection example -->
+        <constructor-arg ref="universityuiipService"/>
+    </bean>
+
+    <bean id="universityuiipService" class="org.training.service.impl.DefaultUniversityuiipService">
+        <!-- setter injection example -->
+        <property name="modelService" ref="modelService"/>
+        <property name="mediaService" ref="mediaService"/>
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+    
+    <!-- Bean Professor Dao -->
+    <bean id="defaultProfessorDao" class="my.universityuiip.professor.dao.impl.DefaultProfessorDao" parent="AbstractItemDao"></bean>
+    <!-- Bean Professor Service -->
+    <bean id="defaultProfessorService" class="org.training.service.impl.DefaultUniversityuiipService">
+       <property name="professordao" ref="defaultProfessorDao"/>
+    </bean>
+    <!-- Bean Student Dao -->
+    <bean id="defaultStudentDao" class="my.universityuiip.student.dao.impl.DefaultStudentDao" parent="AbstractItemDao"></bean>
+    <!-- Bean Student Service -->
+    <bean id="defaultStudentService" class="org.training.service.impl.DefaultUniversityuiipService">
+       <property name="studentdao" ref="defaultStudentDao"/>
+    </bean>
+    <!-- Bean Subject Dao -->
+    <bean id="defaultSubjectDao" class="my.universityuiip.subject.dao.impl.DefaultSubjectDao" parent="AbstractItemDao"></bean>
+    <!-- Bean Subject Service -->
+        <bean id="defaultsubjectService" class="org.training.service.impl.DefaultUniversityuiipService">
+       <property name="subjectdao" ref="defaultSubjectDao"/>
+    </bean>
+    <!-- Bean Exam Dao -->
+    <bean id="defaultExamDao" class="my.universityuiip.exam.dao.impl.DefaultExamDao" parent="AbstractItemDao"></bean>
+    <!-- Bean Exam Service -->
+    <bean id="defaultexamService" class="org.training.service.impl.DefaultUniversityuiipService">
+       <property name="examdao" ref="defaultExamDao"/>
+    </bean>
+
+
+	<bean id="myInitInterceptor" class="my.package.MyInitInterceptor" />
+
+	<bean id="myInitMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping ">
+		<property name="interceptor" ref="myInitInterceptor" />
+		<property name="typeCode" value="Student" />
+		<property name="order" value="1" />
+		<property name="replacedInterceptors" ref="existingInterceptorA,existingInterceptorB" />
+	</bean>
+
+	<bean id="myInitInterceptor" class="my.package.MyInitInterceptor" />
+
+	<bean id="myInitMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping ">
+		<property name="interceptor" ref="myInitInterceptor" />
+		<property name="typeCode" value="Professor" />
+		<property name="order" value="1" />
+		<property name="replacedInterceptors" ref="existingInterceptorA,existingInterceptorB" />
+	</bean>
+
+	<bean id="myPrepareInterceptor" class="my.package.myPrepareInterceptor" />
+
+	<bean id="myPrepareMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping ">
+		<property name="interceptor" ref="myPrepareInterceptor" />
+		<property name="typeCode" value="Exam" />
+		<property name="order" value="1" />
+		<property name="replacedInterceptors" ref="existingInterceptorA,existingInterceptorB" />
+	</bean>
+	
+</beans>

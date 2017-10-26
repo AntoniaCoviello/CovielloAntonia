@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			xsi:noNamespaceSchemaLocation="items.xsd">
+	
+	<enumtypes>	
+	   <enumtype code="ExamResultEnum" autocreate="true" generate="true">
+            <value code="PASSED"/>
+            <value code="REJECTED"/>
+	   </enumtype>
+	</enumtypes>	
+	
+	<relations>
+	
+		<relation code="Professor2SubjectRelation" generate="true" localized="false">
+			<sourceElement type="Professor" qualifier="professor" cardinality="one" />
+			<targetElement type="Subject" qualifier="subjects" cardinality="many" />
+		</relation>
+		
+		<relation code="Student2ExamRelational" autocreate="true" generate="true" localized="false">
+			<sourceElement qualifier="student" type="Student" cardinality="one" />
+			<targetElement qualifier="exams" type="Exam" cardinality="many" />
+		</relation>
+		
+	</relations>
+
+	<itemtypes>
+	
+		<itemtype code="Individual">
+			<deployment table="Individual" typecode='20000'></deployment>
+			<attributes>
+				<attribute qualifier="serialnumber" type="java.lang.String">
+					<modifiers optional="false" unique="true" />
+					<persistence type="property"></persistence>
+				</attribute>
+				<attribute qualifier="fullName" type="java.lang.String">
+					<persistence type="property"></persistence>
+				</attribute>
+				<attribute qualifier="birthDate" type="java.util.Date">
+					<persistence type="property"></persistence>
+				</attribute>
+			</attributes>
+		</itemtype>
+		
+		<itemtype code="Student" extends="Individual">
+			<deployment table="Student" typecode='20030'></deployment>
+		</itemtype>
+		<itemtype code="Professor" extends="Individual">
+			<deployment table="Professor" typecode='20040'></deployment>
+		</itemtype>
+		
+		<itemtype code="Subject">
+			<deployment table="Subject" typecode='20010'></deployment>
+			<attributes>
+				<attribute qualifier="uid" type="java.lang.String">
+					<modifiers optional="false" unique="true" />
+					<persistence type="property"></persistence>
+				</attribute>
+				<attribute qualifier="name" type="localized:java.lang.String">
+					<persistence type="property"></persistence>
+				</attribute>
+				<attribute qualifier="program" type="localized:java.lang.String">
+					<persistence type="property">
+						<columntype>
+							<value>HYBRIS.LONG_STRING</value>
+						</columntype>
+					</persistence>
+				</attribute>
+			</attributes>
+		</itemtype>
+
+		<itemtype code="Exam">
+			<deployment table="Exam" typecode='20020'></deployment>
+			<attributes>
+				<attribute qualifier="uid" type="java.lang.String">
+					<modifiers optional="false" unique="true" />
+					<persistence type="property"></persistence>
+				</attribute>
+				<attribute qualifier="subject" type="Subject">
+					<persistence type="property"></persistence>
+				</attribute>
+				<attribute qualifier="result" type="ExamResultEnum">
+					<persistence type="property"></persistence>
+				</attribute>
+				<attribute qualifier="grade" type="java.lang.Integer">
+					<persistence type="property"></persistence>
+				</attribute>
+			</attributes>
+		</itemtype>
+	</itemtypes>
+</items>

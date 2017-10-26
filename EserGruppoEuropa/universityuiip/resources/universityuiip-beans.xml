@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="beans.xsd">
+	
+   <bean class="my.universityuiip.data.Individual">
+		<property name="serialNumber" type="String" />
+		<property name="fullName" type="String" />
+		<property name="birthDate" type="java.util.Date" />
+	</bean>
+
+	<bean class="my.universityuiip.data.Student" extends="Individual"></bean>
+
+	<bean class="my.universityuiip.data.Professor" extends="Individual"></bean>
+
+	<bean class="my.universityuiip.data.Exam">
+		<property name="uid" type="String" />
+		<property name="subject" type="my.universityuiip.data.Subject" />
+		<property name="result" type="Enum" />
+		<property name="grade" type="java.lang.Integer"></property>
+	</bean>
+
+	<bean class="my.universityuiip.data.Subject">
+		<property name="uid" type="String" />
+		<property name="name" type="String" />
+		<property name="program" type="localized:java.lang.String" />
+	</bean>
+
+
+</beans>
