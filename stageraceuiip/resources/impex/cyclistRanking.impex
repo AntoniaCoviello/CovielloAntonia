@@ -1,0 +1,4 @@
+INSERT_UPDATE CyclistRanking;code[unique=true];stagerace(code);cyclist(code);position;timetot
+							;1                ;1              ;1            ;1		 ;7300
+							;2                ;1              ;3            ;2       ;7800
+							;3                ;1              ;4            ;3       ;8400

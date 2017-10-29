@@ -1,0 +1,2 @@
+INSERT_UPDATE Trigger;CronJob(code)[unique=true];cronExpression ;
+						 1; * 10 0 * * * ?

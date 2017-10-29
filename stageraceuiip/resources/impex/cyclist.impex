@@ -1,0 +1,5 @@
+INSERT_UPDTAE Cyclist;code[unique=true];name;surname;stagerankings(code)
+					; 1;Antonia;Coviello;
+					;2;Francesca;DiMare;
+					;3;Francesco;Riccardo;
+					;4;Francesco;Vietri;

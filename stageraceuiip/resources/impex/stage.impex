@@ -1,0 +1,5 @@
+INSERT_UPDATE Stage;code[unique=true];startpoint;endpoint;km;date[dateformat='dd.MM.yyyy'']][default=null];stagerace(code)[default=1]
+					;1;Alghero;Tortoli;427;;;
+					;2;Tortoli;Messina;488;;;
+					;3;Messina;Alberobello;441;;;
+					
