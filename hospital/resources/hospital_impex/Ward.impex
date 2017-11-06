@@ -1,0 +1,4 @@
+INSERT_UPDATE Ward;code[unique=true];name
+				  ;1				;Oncology
+				  ;2				;Maternity
+				  ;3				;Physiotherapy

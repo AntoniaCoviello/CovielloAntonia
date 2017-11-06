@@ -1,0 +1,7 @@
+INSERT_UPDATE Patient;code[unique=true];name;surname;cf;dateofbirth[dateformat='MM/DD/YYYY'];placeofbirth;gender(code);dateofRecovery[dateformat='MM/DD/YYYY'];exitofHospital[dateformat='MM/DD/YYYY'];daysofRecovery;ward(code)
+					 ;7				   ;Mauri;zio	;486;05/03/1953							;Cagliari    ;MALE;01/05/2003								;03/05/2003								;			   ;1
+					 ;8				   ;Lui	 ;gi	;511;11/05/1949							;Benevento   ;MALE	;10/12/1999								;13/12/1999								;			   ;1
+					 ;9				   ;Ma	 ;ria	;113;18/10/1968							;Venezia	 ;FEMALE;11/10/2017								;15/10/2017								;	   		   ;2
+					 ;10			   ;Eli	 ;sa    ;631;22/9/1952							;Aversa		 ;FEMALE;24/02/1993								;28/02/1993								;			   ;2
+					 ;11			   ;Vin	 ;cenzo ;984;18/10/1959							;SanMarcellino;MALE ;14/6/2011								;20/6/2011								;              ;3
+					 ;12			   ;Ila	 ;ria	;247;16/4/1962							;Ariano		 ;FEMALE;11/12/2015								;12/12/2015								;              ;3

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			xsi:noNamespaceSchemaLocation="items.xsd">
+
+	<enumtypes>
+		<enumtype code="Gender1" autocreate="true" generate="true">
+			<value code="MALE"></value>
+			<value code="FEMALE"></value>
+		</enumtype>
+
+
+
+		<enumtype code="Result" autocreate="true" generate="true">
+			<value code="NEGATIVE"></value>
+			<value code="POSITIVE"></value>
+		</enumtype>
+	</enumtypes>
+	
+	<relations>
+		<relation code="Ward2DoctorRelation" localized="false"	autocreate="true" generate="true">
+			<sourceElement type="Ward" qualifier="ward" cardinality="one" />
+			<targetElement type="Doctor" qualifier="doctors" cardinality="many" />
+		</relation>
+		<relation code="Ward2PatientRelation" localized="false"	autocreate="true" generate="true">
+			<sourceElement type="Ward" qualifier="ward" cardinality="one" />
+			<targetElement type="Patient" qualifier="patients" cardinality="many" />
+		</relation>		
+		
+		<relation code="Doctor2VisitRelation" localized="false"	autocreate="true" generate="true">
+			<sourceElement type="Doctor" qualifier="doctor" cardinality="one" />
+			<targetElement type="Visit" qualifier="visites" cardinality="many" />
+		</relation>
+	</relations>
+	
+	<itemtypes>
+
+		<itemtype  code="Ward" generate="true"  autocreate="true">
+		<deployment table="Ward" typecode="15001" />
+		  <attributes>
+		  
+				<attribute qualifier="code" type="java.lang.String">
+					<modifiers unique="true" optional="false"/>
+					<persistence type="property"/>
+				</attribute>
+
+				<attribute qualifier="name" type="java.lang.String">
+              		 <persistence type="property"/>
+				</attribute>
+
+			</attributes>
+		</itemtype>
+		
+		<itemtype  code="Individual1" generate="true"  autocreate="true">
+		<deployment table="Individual1" typecode="15002" />
+		  <attributes>
+		  
+				<attribute qualifier="code" type="java.lang.String">
+					<modifiers unique="true" optional="false"/>
+					<persistence type="property"/>
+				</attribute>
+
+				<attribute qualifier="name" type="java.lang.String">
+              		 <persistence type="property"/>
+				</attribute>
+				
+				<attribute qualifier="surname" type="java.lang.String">
+              		 <persistence type="property"/>
+				</attribute>				
+
+				<attribute qualifier="cf" type="java.lang.String">
+				   	 <modifiers unique="true"/>
+              		 <persistence type="property"/>
+				</attribute>
+				
+				<attribute qualifier="dateofbirth" type="java.util.Date">
+              		 <persistence type="property"/>
+				</attribute>
+				
+				<attribute qualifier="placeofbirth" type="java.lang.String">
+              		 <persistence type="property"/>
+				</attribute>
+				
+				<attribute qualifier="gender" type="Gender1">
+              		 <persistence type="property"/>
+				</attribute>												
+			</attributes>
+		</itemtype>
+		
+		<itemtype  code="Doctor" generate="true"  autocreate="true" extends="Individual1">
+		<deployment table="Doctor" typecode="15003" />
+		  <attributes>
+		  
+				<attribute qualifier="registrationNumber" type="java.lang.String">
+			    	<modifiers unique="true"/>
+					<persistence type="property"/>
+				</attribute>
+
+			</attributes>
+		</itemtype>
+				
+		<itemtype  code="Patient" generate="true"  autocreate="true" extends="Individual1">
+		<deployment table="Patient" typecode="15004" />
+		  <attributes>
+		  
+				<attribute qualifier="dateofRecovery" type="java.util.Date">
+					<persistence type="property"/>
+				</attribute>
+				
+				<attribute qualifier="exitofHospital" type="java.util.Date">
+					<persistence type="property"/>
+				</attribute>
+				
+				<attribute  qualifier="daysofRecovery" type="java.lang.Integer">
+					<modifiers optional="true" unique="false" write="false" />
+					<persistence type="dynamic" attributeHandler="dayHandler"/>
+				</attribute>
+
+			</attributes>
+		</itemtype>
+
+		<itemtype  code="Visit" generate="true"  autocreate="true" >
+		<deployment table="Visit" typecode="15005" />
+		  <attributes>
+		  
+				<attribute qualifier="code" type="java.lang.String">
+					<modifiers unique="true" optional="false"/>
+					<persistence type="property"/>
+				</attribute>
+
+				<attribute qualifier="dateofVisit" type="java.util.Date">
+					<persistence type="property"/>
+				</attribute>
+				
+				<attribute qualifier="result" type="Result">
+					<persistence type="property"/>
+				</attribute>
+				
+				<attribute  qualifier="patient" type="Patient">
+					<persistence type="property"/>
+				</attribute>
+
+			</attributes>
+		</itemtype>
+
+	</itemtypes>
+</items>

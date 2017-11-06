@@ -1,0 +1,9 @@
+INSERT_UPDATE Visit;code[unique=true];dateofVisit[dateformat='MM/DD/YYYY'];result(code);patient(code);doctor(code)
+				   ;1				 ;2/05/2003							 ;POSITIVE;7		  ;1
+				   ;2				 ;11/12/1999						 ;NEGATIVE;8		  ;2
+				   ;3				 ;3/05/2003							 ;NEGATIVE;7		  ;1
+				   ;4				 ;13/10/2017						 ;NEGATIVE;9		  ;3
+				   ;5				 ;26/02/1993						 ;NEGATIVE;10		  ;4
+				   ;6				 ;16/06/2011						 ;POSITIVE;11         ;5
+				   ;7				 ;17/06/2011						 ;NEGATIVE;11         ;5
+				   ;8				 ;11/12/2015					     ;NEGATIVE;12		  ;6
